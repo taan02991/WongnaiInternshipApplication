@@ -29,7 +29,7 @@ public class MoviesController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String helloWorld() {
-		return "Hello World!";
+		return "Hello World!2";
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
