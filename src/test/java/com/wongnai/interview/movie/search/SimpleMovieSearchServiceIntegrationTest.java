@@ -22,7 +22,6 @@ public class SimpleMovieSearchServiceIntegrationTest {
 	@Test
 	public void testFindSingleKeywordContainInTitle() {
 		List<Movie> result = searchService.search("Glorious");
-
 		assertGloriousMovieKeyword(result);
 	}
 
@@ -62,7 +61,6 @@ public class SimpleMovieSearchServiceIntegrationTest {
 	@Test
 	public void testFindSingleKeywordContainInTitleWithCaseInsensitive() {
 		List<Movie> result = searchService.search("glorious");
-
 		assertGloriousMovieKeyword(result);
 	}
 }
