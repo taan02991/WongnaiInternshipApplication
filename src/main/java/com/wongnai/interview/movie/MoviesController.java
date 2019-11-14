@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wongnai.interview.movie.search.DatabaseMovieSearchService;
+import com.wongnai.interview.movie.search.InvertedIndexMovieSearchService;
 
 @RestController
 @RequestMapping("/movies")
@@ -26,8 +26,8 @@ public class MoviesController {
 	 * </pre>
 	 */
 	@Autowired
-	@Qualifier("databaseMovieSearchService")
-	private DatabaseMovieSearchService movieSearchService;
+	@Qualifier("invertedIndexMovieSearchService")
+	private InvertedIndexMovieSearchService movieSearchService;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String helloWorld() {

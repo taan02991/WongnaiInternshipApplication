@@ -1,5 +1,7 @@
 package com.wongnai.interview.movie.sync;
 
+
+
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Component;
 public class MovieDatabaseInitializer implements InitializingBean {
 	@Autowired
 	private MovieDataSynchronizer movieDataSynchronizer;
+	
 
 	@Override
 	public void afterPropertiesSet() throws Exception {

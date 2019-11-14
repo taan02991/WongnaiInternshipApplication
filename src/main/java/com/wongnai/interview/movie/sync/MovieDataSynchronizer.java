@@ -1,6 +1,8 @@
 package com.wongnai.interview.movie.sync;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -21,6 +23,8 @@ public class MovieDataSynchronizer {
 
 	@Autowired
 	private MovieRepository movieRepository;
+	
+	public static HashMap<String, HashSet<Long>> invertedIndex = new HashMap<String, HashSet<Long>>();
 
 	@Transactional
 	public void forceSync() {
@@ -33,5 +37,21 @@ public class MovieDataSynchronizer {
 			result.add(m);
 		}
 		movieRepository.saveAll(result);
+		
+		for(Movie m: movieRepository.findAll()) {
+			long id = m.getId();
+			String[] name = m.getName().split(" ");
+			for(String word: name) {
+				word = word.toLowerCase();
+				if(invertedIndex.containsKey(word)) {
+					invertedIndex.get(word).add(id);
+				}
+				else {
+					HashSet<Long> hs = new HashSet<Long>();
+					hs.add(id);
+					invertedIndex.put(word, hs);					
+				}
+			}
+		}
 	}
 }
