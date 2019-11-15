@@ -29,6 +29,7 @@ public class MovieDataSynchronizer {
 	@Transactional
 	public void forceSync() {
 		//TODO: implement this to sync movie into repository
+		if(movieRepository.count() > 0) return;
 		List<Movie> result =  new ArrayList<Movie>();
 		MoviesResponse response = movieDataService.fetchAll();
 		for(MovieData data: response) {
